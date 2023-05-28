@@ -12,4 +12,4 @@ seq 1 262 |
 	cut -f 2 -d ' ' |
 	tee list |
 	tr '\n' ',' |
-	sed 's/.$//;s/.*/[&]/'
+	sed 's/.$//'
