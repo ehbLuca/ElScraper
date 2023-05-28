@@ -1,4 +1,7 @@
 env/
 .gitignore
+images/
+img_links.txt
+list
 __pycache__/
 todo.txt
