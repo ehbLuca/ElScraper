@@ -31,5 +31,4 @@ def updateAddress(place_id, address):
 def getTable(column):
     cur = dbConnect()
     cur.execute(f"SELECT * FROM {column}")
-    print(column + ": ")
     return cur
