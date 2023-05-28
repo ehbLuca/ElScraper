@@ -1,14 +1,7 @@
 ## Installation
-### WINDOWS
-```powershell
-python -m venv env
-env\bin\activate.ps1
-pip install -r requirements.txt
-```
-
-### LINUX
+### ON LINUX
 ```bash
-python -m venv env
-./env/bin/activate
-pip install -r requirements.txt
+git clone https://github.com/ehbLuca/ElScraper
+cd ElScraper
+./scripts/install.sh
 ```

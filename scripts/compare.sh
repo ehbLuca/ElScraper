@@ -1,5 +1,8 @@
 #!/bin/sh
 
+dir="$(realpath $0 | xargs dirname)"
+cd "$dir"/../out
+
 cut -f 1 -d ',' img_links.txt | 
 	sort -n |
 	uniq > list

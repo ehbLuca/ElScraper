@@ -75,6 +75,6 @@ def scrapeImages(driver, skip=0):
 
 def main():
     driver = webdriver.Chrome()
-    scrapeImages(driver, skip=73)
+    scrapeImages(driver)
 
 main()
