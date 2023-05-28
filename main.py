@@ -29,7 +29,7 @@ def findSearchButton(driver, id):
 def findImage(driver, selector):
     return driver.find_element(By.CSS_SELECTOR, selector)
 
-def scrapeImages(driver):
+def scrapeImages(driver, skip=0):
     # Defining variables
     url = f"https://www.google.com/maps/place"
     output_file = "img_links.txt"
@@ -49,9 +49,12 @@ def scrapeImages(driver):
         print(place)
         # Create place query
         # it consists of name + address
+        place_id = place[0]
+        if skip > place_id:
+            continue
+        print(place_id)
         query = place[1] + " " + place[3]
         query = query.replace(" ", "+")
-        place_id = place[0]
 
         # Search for place on maps
         driver.get(url + "/" + query)
@@ -72,6 +75,6 @@ def scrapeImages(driver):
 
 def main():
     driver = webdriver.Chrome()
-    scrapeImages(driver)
+    scrapeImages(driver, skip=73)
 
 main()
