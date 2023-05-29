@@ -1,12 +1,15 @@
 #!./env/bin/python
 import requests
 import time
+from rich.traceback import install
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
 import gmrequests
 import queries
+
+install()
 
 # Defining variables
 URL = f"https://www.google.com/maps/place"
