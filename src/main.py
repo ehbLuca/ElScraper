@@ -1,6 +1,7 @@
 #!./env/bin/python
 import requests
 import time
+import sys
 from rich.traceback import install
 
 from selenium import webdriver
@@ -36,7 +37,7 @@ def findSearchButton(driver, id):
 def findImage(driver, selector):
     return driver.find_element(By.CSS_SELECTOR, selector)
 
-def scrapeImages(driver, skip=0):
+def scrapeImages(driver, skip=0, skipList=None):
     # selectors
     deny_button_text = 'Alles afwijzen'
     search_button_id = 'searchbox-searchbutton'
@@ -56,6 +57,10 @@ def scrapeImages(driver, skip=0):
         place_id = place[0]
         if skip > place_id:
             continue
+        if (skipList):
+            if str(place_id) not in skipList:
+                continue
+
         print(place_id)
         query = place[1] + " " + place[3]
         query = query.replace(" ", "+")
@@ -79,6 +84,8 @@ def scrapeImages(driver, skip=0):
 
 def main():
     driver = webdriver.Chrome()
-    scrapeImages(driver)
+    if (len(sys.argv) == 2):
+        skipList = sys.argv[1].split(',')
+    scrapeImages(driver, skipList=skipList)
 
 main()
